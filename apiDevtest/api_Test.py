@@ -9,7 +9,7 @@ class DevTest():
 #Post Request test:
     def postRequest(self):
         # Read iput Json file
-        file = open('C:\\Users\\Gajanan\\Desktop\\CreateUser.json', 'r')
+        file = open('C:\\Users\\Gajanan\\devtest\\CreateUser.json', 'r')
         json_input = file.read()
         request_json = json.loads(json_input)
 
@@ -39,7 +39,7 @@ class DevTest():
         # Put request with json input body
         response = requests.put(self.url, request_json)
 
-        # validating response code for +ve testing
+        # validating response code
         assert response.status_code == 200
 
         # Parse response to json format
@@ -68,6 +68,9 @@ class DevTest():
         # Parse response to json format
         response_json = json.loads(response.text)
         print(response_json)
+
+        # validating response code
+        assert response.status_code == 200
 
         # fetch the value using json Path
         pages = jsonpath.jsonpath(response_json,'total_pages')
